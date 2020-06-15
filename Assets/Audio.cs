@@ -10,13 +10,6 @@ public class Audio : MonoBehaviour
     public AudioSource footStepSource;
     public AudioSource jumpSource;
     public AudioSource landSource;
-    bool hasPlayed = false;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void PlayFootSteps()
     {
@@ -32,39 +25,5 @@ public class Audio : MonoBehaviour
     {
         landSource.PlayOneShot(landClips[Random.Range(0, landClips.Length)]);
         footStepSource.PlayOneShot(footSteps[Random.Range(0, footSteps.Length)]);
-    }
-
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.name == "Terrain")
-        {
-            if (hasPlayed != true)
-            {
-                PlayFootSteps();
-                print("it works");
-                //hasPlayed = true;
-            }
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        hasPlayed = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        hasPlayed = false;
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        hasPlayed = true;
-    }*/
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
