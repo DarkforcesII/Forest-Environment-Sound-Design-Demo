@@ -5,13 +5,15 @@ using UnityEngine;
 public class Audio : MonoBehaviour
 {
     public AudioClip[] footSteps;
-    private AudioSource sfxSource;
+    public AudioClip[] jumpClips;
+    public AudioClip[] landClips;
+    public AudioSource sfxSource;
     bool hasPlayed = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        sfxSource = GetComponent<AudioSource>();
+        
     }
 
     public void PlayFootSteps()
@@ -19,7 +21,17 @@ public class Audio : MonoBehaviour
         sfxSource.PlayOneShot(footSteps[Random.Range(0, footSteps.Length)]);
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void PlayJumpClips()
+    {
+        sfxSource.PlayOneShot(jumpClips[Random.Range(0, jumpClips.Length)]);
+    }
+
+    public void PlayLandClips()
+    {
+        sfxSource.PlayOneShot(landClips[Random.Range(0, landClips.Length)]);
+    }
+
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Terrain")
         {
@@ -42,7 +54,7 @@ public class Audio : MonoBehaviour
         hasPlayed = false;
     }
 
-    /*private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit(Collision collision)
     {
         hasPlayed = true;
     }*/
