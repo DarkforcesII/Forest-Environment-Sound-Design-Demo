@@ -7,7 +7,9 @@ public class Audio : MonoBehaviour
     public AudioClip[] footSteps;
     public AudioClip[] jumpClips;
     public AudioClip[] landClips;
-    public AudioSource sfxSource;
+    public AudioSource footStepSource;
+    public AudioSource jumpSource;
+    public AudioSource landSource;
     bool hasPlayed = false;
 
     // Start is called before the first frame update
@@ -18,17 +20,18 @@ public class Audio : MonoBehaviour
 
     public void PlayFootSteps()
     {
-        sfxSource.PlayOneShot(footSteps[Random.Range(0, footSteps.Length)]);
+        footStepSource.PlayOneShot(footSteps[Random.Range(0, footSteps.Length)]);
     }
 
     public void PlayJumpClips()
     {
-        sfxSource.PlayOneShot(jumpClips[Random.Range(0, jumpClips.Length)]);
+        jumpSource.PlayOneShot(jumpClips[Random.Range(0, jumpClips.Length)]);
     }
 
     public void PlayLandClips()
     {
-        sfxSource.PlayOneShot(landClips[Random.Range(0, landClips.Length)]);
+        landSource.PlayOneShot(landClips[Random.Range(0, landClips.Length)]);
+        footStepSource.PlayOneShot(footSteps[Random.Range(0, footSteps.Length)]);
     }
 
     /*private void OnTriggerEnter(Collider other)
