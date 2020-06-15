@@ -19,18 +19,33 @@ public class Audio : MonoBehaviour
         sfxSource.PlayOneShot(footSteps[Random.Range(0, footSteps.Length)]);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Terrain")
+        if (other.gameObject.name == "Terrain")
         {
             if (hasPlayed != true)
             {
                 PlayFootSteps();
                 print("it works");
-                hasPlayed = true;
+                //hasPlayed = true;
             }
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        hasPlayed = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        hasPlayed = false;
+    }
+
+    /*private void OnCollisionExit(Collision collision)
+    {
+        hasPlayed = true;
+    }*/
 
     // Update is called once per frame
     void Update()
