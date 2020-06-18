@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class Audio : MonoBehaviour
 {
+    [Tooltip("This is where you can place your own music into the scene.")]
+    public AudioClip musicClip;
+    [Tooltip("This is where you can place your footstep sfx into the scene. " +
+        "You can change the amount of clips by changing the size number")]
     public AudioClip[] footSteps;
+    [Tooltip("This is where you can place your jump sfx into the scene. " +
+        "You can change the amount of clips by changing the size number")]
     public AudioClip[] jumpClips;
+    [Tooltip("This is where you can place your land sfx into the scene. " +
+        "You can change the amount of clips by changing the size number")]
     public AudioClip[] landClips;
+    public AudioSource musicSource;
     public AudioSource footStepSource;
     public AudioSource jumpSource;
     public AudioSource landSource;
+
+    private void Start()
+    {
+        musicSource.clip = musicClip;
+        musicSource.loop = true;
+        musicSource.Play();
+    }
 
     public void PlayFootSteps()
     {
